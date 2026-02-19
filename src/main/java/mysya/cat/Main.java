@@ -1,95 +1,133 @@
 package mysya.cat;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class Main { // без этого требования Java-программа не запустится
+public class Main {  // это класс с точкой входа (где начинается выполнение программы)
 
-  public static void main(String[] args) { // массив строк
-    System.out.println("Привет мир"); // вывод системы на печать
+  public static void main(String[] args) { // это место, с которого обязательно стартует Java-программа
 
-    
-    // Целочисленные типы
-    byte aByte = 0; // занимает 8b (бит) -128 + 127
-    short aShort = 0; // занимает 16b (бит) -32768 + 32767
-    int aInt = 0; // занимает 32b (бит) (-2^32) .. (+2^32 -1)
-    long aLong = 0; // занимает 64b (бит)
-
-    // Типы с плавающей точкой
-    float aFloat = 0.0F;
-    double aDouble = 0.0;
-    Double doubleWrapper = 9.1; // Обёртка над типом
-
-    // Символьный тип
-    char aChar = 'a';
-    Character charWrapper = 'a'; // Обёртка над типом
-
-    // Логический тип
-    boolean aBoolean = false;
-    Boolean booleanWrapper = true; // Обёртка над типом
-
-    // Строка
-    String toBePrint = "Hello World"; // тип данных - строка, придумали название(переменная), присвоили значение Hello world!
-    System.out.println(toBePrint); // присвоили переменную
-    List<Integer> teachers = List.of(10, 20);
+    // создали человека
+    Human tanya = new Human(
+        "Tatiana",
+        21,
+        true);
 
 
-    // Составные типы данных. Описываем серую чашку с ручкой и объёмом в 250мл
-    // struct Cup {
-    // String color = "grey";
-    // int capacity = 250;
-    // boolean hasHandle = true; }
-
-
-    // Операторы
-    // Оператор присвоения =
-    String name = "Hello";
-
-    // Арифметические операторы + - * / % ++ --
-    System.out.println(4.0 + 3);
-    System.out.println(4.0 / 3);
-    System.out.println(5 / 3);
-    System.out.println(5 % 3);
-
-    int result = aInt + 1; // потому что вверху есть (int aInt = 0)
-    System.out.println(result);
-
-    result = ++aInt; // ++ прибавляет единицу
-    System.out.println(result);
-
-    result = aInt - 1; // потому что вверху есть (int aInt = 0)
-    System.out.println(result);
-
-    result = --aInt; // -- отнимает единицу
-    System.out.println(result);
+  // Демонстрация передачи параметров в метод
+    List<String> lectures = new ArrayList<>(); // список с лекциями
+    lectures.add("git");
+    lectures.add("java");
+    lectures.add("files");
+    lectures.add("junit");
 
 
 
-    // Операторы сравнения <, >, <=, >=, !=, ==
-    System.out.println(3 > 2);
+    // Set — коллекция уникальных элементов
+    // Добавили в Set.of уникальные значения
+    Set<String> lecturesSet = Set.of(
+        "git", "java", "files", "junit"
+    );
 
-    // Логические операторы & (и), |(или), &&(сокращенное и), ||(сокращенное или), ^(аналог != - используется редко)
-    // System.out.println(!(nameFirst.equals("Dmitrii")));
 
-    // Оператор instanceof
-    // System.out.println(nameFirst instanceof  String);
+    // Map — коллекция «ключ → значение»
+    // ключ (String) — уникальный идентификатор
+    // значение (Human) — объект, который мы хотим найти по ключу
+    Map<String, Human> humans = new HashMap<>();
+    humans.put("673427234", tanya);
+    humans.put("354543534", tanya);
+    humans.put("675676565", tanya);
+    humans.put("877687686", tanya);
+    humans.put("234764777", tanya);
+    humans.put("984564566", tanya);
 
-    // Тернарный оператор
-    char sex = 'm';
-    String childName = sex == 'm'
-        ? "Valentin"
-        : "Valentina";
 
-    // Управляющая конструкция if
-    if (sex == 'm') {
-      childName = "Valentin";
-    } else if (sex == 'w') {
-      childName = "Valentina";
-    } else {
-      System.out.println("((");
+  // Три способа перебрать Map в цикле
+    // (ключ + значение сразу)
+    for (Map.Entry<String, Human> entry : humans.entrySet()) {
+      entry.getKey();
+      entry.getValue();
     }
 
-    // Ключевое слово new
-    // String name = new String("Dima");
+    // (только ключи)
+    for (String key : humans.keySet()) {
 
     }
+    // (только значения)
+    for (Human value : humans.values()) {
+
+    }
+
+
+    int hours = 12;
+    String hello = "Hello";
+
+    tanya.printSomeValues(hours, hello, lectures);
+
+
+  // Затем сразу после вызова печатаем значения снова:
+    System.out.println("After method, int: " + hours); // всё ещё 12
+    System.out.println("After method, String: " + hello); // всё ещё "Hello"
+    System.out.println("After method, List: " + lectures); // уже 5 элементов!
+
+
+
+    // Классические массивы. Обозначение типа массива
+    String[] lecturesArray = new String[]{"git", "java", "files", "junit"}; // задали строго 4 элемента
+    lecturesArray[0] = "git";
+    lecturesArray[1] = "java";
+    lecturesArray[2] = "files";
+    lecturesArray[3] = "junit";
+
+
+
+    // int[] — одномерный массив
+    int[] intArray0 = new int[]{1, 2, 3};
+    int[] intArray1 = new int[]{1, 2, 3};
+
+    // двумерный массив (таблица)
+    int[][] biArray0 = new int[][]{intArray0, intArray1};
+    int[][] biArray1 = new int[][]{
+        intArray0, intArray1};
+
+
+    // int[][][] — трёхмерный массив
+    int[][][] threeArray = new int[][][]{
+        biArray0, biArray1};
+
+    // Циклы for-each + continue + return
+//        for (int i = 0; i < lecturesArray.length ; i++) {
+//            System.out.println(lecturesArray[i]);
+//        }
+//
+//        for (int i = lecturesArray.length - 1; i >= 0; i--) {
+//            System.out.println(lecturesArray[i]);
+//        }
+
+    for (String lectureName : lecturesArray) {
+      if (!lectureName.startsWith("j")) {
+        continue; // пропустить итерацию, перейти к следующему элементу
+      }
+      System.out.println(lectureName);
+      return; // ← немедленно выйти из метода main → программа завершится
+    }
+
+    // циклы while
+//        int i = 0;                           (создаём счётчик i и ставим его в начало)
+//        while (i < lecturesArray.length) {   (пока счётчик меньше длины массива — повторяем всё, что внутри {})
+//            System.out.println(lecturesArray[i]); (печатаем элемент под номером i)
+//            i++;                                  (увеличиваем счётчик на 1)
+//        }
+//
+
   }
+
+}
+
+
+
+
+
