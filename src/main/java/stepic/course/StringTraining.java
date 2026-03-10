@@ -1,6 +1,10 @@
 package stepic.course;
 
-public class String {}
+public class StringTraining {
+
+  public static void main() {}
+
+}
 
   // Общий синтаксис для всех методов выглядит так:
   //  stringName.nameOfMethod();
