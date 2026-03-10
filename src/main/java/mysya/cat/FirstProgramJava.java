@@ -1,13 +1,13 @@
 package mysya.cat;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class FirstProgramJava { // без этого требования Java-программа не запустится
 
   public static void main(String[] args) { // массив строк
     System.out.println("Привет мир"); // вывод системы на печать
 
-    
     // Целочисленные типы
     byte aByte = 0; // занимает 8b (бит) -128 + 127
     short aShort = 0; // занимает 16b (бит) -32768 + 32767
@@ -32,13 +32,11 @@ public class FirstProgramJava { // без этого требования Java-�
     System.out.println(toBePrint); // присвоили переменную
     List<Integer> teachers = List.of(10, 20);
 
-
     // Составные типы данных. Описываем серую чашку с ручкой и объёмом в 250мл
     // struct Cup {
     // String color = "grey";
     // int capacity = 250;
     // boolean hasHandle = true; }
-
 
     // Операторы
     // Оператор присвоения =
@@ -62,8 +60,6 @@ public class FirstProgramJava { // без этого требования Java-�
     result = --aInt; // -- отнимает единицу
     System.out.println(result);
 
-
-
     // Операторы сравнения <, >, <=, >=, !=, ==
     System.out.println(3 > 2);
 
@@ -75,9 +71,7 @@ public class FirstProgramJava { // без этого требования Java-�
 
     // Тернарный оператор
     char sex = 'm';
-    String childName = sex == 'm'
-        ? "Valentin"
-        : "Valentina";
+    String childName = sex == 'm' ? "Valentin" : "Valentina";
 
     // Управляющая конструкция if
     if (sex == 'm') {
@@ -91,5 +85,9 @@ public class FirstProgramJava { // без этого требования Java-�
     // Ключевое слово new
     // String name = new String("Dima");
 
-    }
   }
+
+
+
+  }
+
